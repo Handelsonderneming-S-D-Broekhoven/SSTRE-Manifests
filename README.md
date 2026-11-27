@@ -21,6 +21,9 @@ This repository answers *how each asset should be processed*, as data:
 - per-game data for TFE and TSE;
 - machine-generated per-asset recipes (development time only);
 - curated overrides for prominent or problematic assets;
+- asset-layer build configurations, platform profiles, approvals for the
+  opt-in HD Artwork / HD Interface layers and override pack references
+  (SSTRE ADR-0009; see [docs/layout.md](./docs/layout.md));
 - frozen lock manifests that make release builds reproducible.
 
 Precedence: curated override > generated per-asset recipe > material profile >
