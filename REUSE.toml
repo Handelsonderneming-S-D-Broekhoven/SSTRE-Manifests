@@ -11,7 +11,7 @@ SPDX-License-Identifier = "CC-BY-SA-4.0"
 
 # Factual manifest metadata: dedicated to the public domain.
 [[annotations]]
-path = ["schemas/**", "mappings/**", "generated/**", "games/*/editions/**", "REUSE.toml", ".gitignore"]
+path = ["schemas/**", "mappings/**", "generated/**", "games/*/editions/**", "REUSE.toml", ".gitignore", ".github/**"]
 precedence = "override"
 SPDX-FileCopyrightText = "2026 Handelsonderneming S.D. Broekhoven, trading as ITEagle Europe"
 SPDX-License-Identifier = "CC0-1.0"
