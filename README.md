@@ -70,12 +70,15 @@ the first manifests and accepted schemas exist.
 
 ## Licensing
 
-License: pending owner choice between GPL-3.0 (project plan) and CC0-1.0 for
-schemas and generated locks plus CC-BY-SA-4.0 for curated recipes (RD-007
-recommendation); see SSTRE `docs/research/RD-007-licensing.md` and ADR-0006. Whether GPL-3.0 suits data files, and
-whether publishing per-asset paths and hashes of proprietary game data is
-acceptable, are open questions in that review. No license file is present yet,
-which means no license is granted at this time.
+Copyright © 2026 Handelsonderneming S.D. Broekhoven, trading as ITEagle Europe, and contributors.
+
+Two licenses, by kind of content — see [`LICENSE.md`](LICENSE.md) for the exact distinction:
+
+- **`CC0-1.0`** for factual manifest metadata (identifiers, paths, hashes, mappings, generated locks, schemas).
+- **`CC-BY-SA-4.0`** for original creative recipes, material profiles, curated overrides and documentation.
+
+References to game files grant no rights in that content. Asset identifiers, paths and hashes of proprietary game files are published only after provenance and restrictions are reviewed.
+
 
 ## Related repositories
 

@@ -1,0 +1,17 @@
+# REUSE specification 3.3 — https://reuse.software/spec-3.3/
+# See LICENSE.md for the factual-metadata vs. creative-configuration distinction.
+version = 1
+
+# Default: original creative recipes, curated configuration and documentation.
+[[annotations]]
+path = "**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Handelsonderneming S.D. Broekhoven, trading as ITEagle Europe"
+SPDX-License-Identifier = "CC-BY-SA-4.0"
+
+# Factual manifest metadata: dedicated to the public domain.
+[[annotations]]
+path = ["schemas/**", "mappings/**", "generated/**", "games/*/editions/**", "REUSE.toml", ".gitignore"]
+precedence = "override"
+SPDX-FileCopyrightText = "2026 Handelsonderneming S.D. Broekhoven, trading as ITEagle Europe"
+SPDX-License-Identifier = "CC0-1.0"
