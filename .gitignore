@@ -1,0 +1,55 @@
+# --- Original game data and extracted assets: never commit (see CONTRIBUTING.md) ---
+*.gro
+*.tex
+*.mdl
+*.wld
+*.ani
+*.bm
+*.bs
+*.ba
+*.smc
+*.fnt
+*.tbn
+*.ogg
+*.wav
+*.mp3
+extracted/
+workspace/
+
+# --- Model weights and caches ---
+*.safetensors
+*.ckpt
+*.pth
+*.pt
+*.onnx
+*.gguf
+.cache/
+
+# --- Build outputs ---
+build/
+dist/
+out/
+*.egg-info/
+
+# --- Python tooling ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# --- Secrets ---
+.env
+.env.*
+*.pem
+*.key
+secrets/
+
+# --- Editors / OS ---
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
