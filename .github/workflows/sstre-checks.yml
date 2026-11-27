@@ -1,0 +1,76 @@
+name: sstre-checks
+
+# Real checks only (Phase 1, backlog POC-05):
+#  - validate: Markdown relative links and the forbidden-file scan (game data,
+#    model weights; rules as implemented by the umbrella's
+#    scripts/validate_repo.py fetched at a PINNED umbrella commit);
+#  - reuse:    REUSE (SPDX licensing metadata) compliance.
+# No game data, no GPU, no secrets. To update the validator, bump
+# SSTRE_UMBRELLA_COMMIT to a reviewed umbrella commit (full 40-hex SHA).
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  SSTRE_UMBRELLA_COMMIT: 230ab5e1dbfeb5b04501fb6f2f29fbe407e85d1a
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out this repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          path: repo
+          persist-credentials: false
+
+      - name: Check out umbrella validator (pinned commit)
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: Handelsonderneming-S-D-Broekhoven/SSTRE
+          ref: ${{ env.SSTRE_UMBRELLA_COMMIT }}
+          path: umbrella
+          sparse-checkout: scripts
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.12"
+
+      - name: Install validator dependency
+        run: python -m pip install --disable-pip-version-check "jsonschema==4.26.0"
+
+      - name: Validate repository
+        run: python umbrella/scripts/validate_repo.py --root repo
+
+  reuse:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.12"
+
+      - name: Install REUSE tool
+        run: python -m pip install --disable-pip-version-check "reuse==5.0.2"
+
+      - name: REUSE lint
+        run: reuse lint
