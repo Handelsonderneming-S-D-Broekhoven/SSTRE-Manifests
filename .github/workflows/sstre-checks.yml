@@ -22,7 +22,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  SSTRE_UMBRELLA_COMMIT: 2ffcf1c9ad16a93b9269f9a4484477f313e08774
+  SSTRE_UMBRELLA_COMMIT: 189da0c3a1b65215ca09d0dc77b8b61d4e3e24a0
 
 jobs:
   validate:
